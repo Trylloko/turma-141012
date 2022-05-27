@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Exemplo de HTML + CSS</title>
+    <link rel="stylesheet" href="css/style01.css">
+    <link rel="stylesheet" href="css/style02.css">
+    <link rel="stylesheet" href="css/style03.css">
     <link rel="stylesheet" href="css/style04.css">
 </head>
 
@@ -15,29 +18,34 @@
     <div class="wrapper">
         <div id="menubar">
             <ul>
-                <li class="item-menu">Folha de estilo 1</li>
-                <li class="item-menu">Folha de estilo 2</li>
-                <li class="item-menu">Folha de estilo 3</li>
-                <li class="item-menu">Folha de estilo 4</li>
-                <li class="item-menu">Sem folha de estilo</li>
+                <li class="item-menu" onclick="onStyle(0)">Folha de estilo 1</li>
+                <li class="item-menu" onclick="onStyle(1)">Folha de estilo 2</li>
+                <li class="item-menu" onclick="onStyle(2)">Folha de estilo 3</li>
+                <li class="item-menu" onclick="onStyle(3)">Folha de estilo 4</li>
+                <li class="item-menu" onclick="noStyle()">Sem folha de estilo</li>
             </ul>
         </div>
         <div id="main">
             <h1>Folhas de estilo diferentes da mesma página</h1>
             <p>
-                Esta é uma demonstração de como diferentes folhas de estilo podem alterar o layout de sua página HTML. Você
-                pode
-                alterar o layout desta página selecionando diferentes folhas de estilo no menu ou selecionando um dos
+                Esta é uma demonstração de como diferentes folhas de estilo podem alterar o layout de sua página HTML.
+                Você pode alterar o layout desta página
+                selecionando diferentes folhas de estilo
+                no menu
+                ou selecionando um dos
                 seguintes
                 links:<br>
-                <a href="#">Stylesheet1</a> , <a href="#">Stylesheet2</a> , <a href="#">Stylesheet3</a> , 
-                    <a href="#">Stylesheet4</a> .
+                <a onclick="onStyle(0)" href="#">Stylesheet1</a> ,
+                <a onclick="onStyle(1)" href="#">Stylesheet2</a> ,
+                <a onclick="onStyle(2)" href="#">Stylesheet3</a> , 
+                <a onclick="onStyle(3)" href="#">Stylesheet4</a> .
             </p>
             <h2>Sem estilos</h2>
-            <p>Esta página usa elementos DIV para agrupar diferentes seções da página HTML. Clique aqui para ver como 
+            <p>Esta página usa elementos DIV para agrupar diferentes seções da página HTML. Clique aqui para ver
+                como 
                 fica a
                 página sem folha de estilo: <br>
-                <a href="#">Sem folha de estilo.</a>
+                <a onclick="noStyle()" href="#">Sem folha de estilo.</a>
             </p>
         </div>
         <div id="sidebar">
@@ -57,6 +65,21 @@
         nulla 
         facilisi.
         </div>
+        <script>
+            function noStyle() {
+                document.styleSheets[0].disabled = true;
+                document.styleSheets[1].disabled = true;
+                document.styleSheets[2].disabled = true;
+                document.styleSheets[3].disabled = true;
+            }
+
+            function onStyle(n) {
+                noStyle();
+                document.styleSheets[n].disabled = false;
+            }
+
+            noStyle();
+        </script>
     </body>
 
     </html>
