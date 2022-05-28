@@ -1,0 +1,56 @@
+body {
+    color: red;
+    font: 100% "Lucida Sans", Verdana;
+    margin: 20px;
+    line-height: 26px;
+    background-color: green;
+}
+
+#top {
+    background-color: rgb(209, 190, 190);
+    padding: 15px;
+    text-align: center;
+}
+
+#top h1,
+#top p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.item-menu {
+    list-style-type: none;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: 1px solid #d4d4d4;
+    margin: 4px;
+}
+
+.item-menu:hover{
+    background-color: white;
+    color: #d14836;
+}
+
+ul {
+    width: 200px;
+    float: left;
+}
+
+#main {
+    padding: 10px;
+    margin: 0px 210px;
+}
+
+#sidebar{
+    background-color: #f1f1f1;
+    border: 1px solid #d4d4d4;
+    padding-left: 10px;
+}
+
+#bottom{
+    text-align: center;
+    font-size: 70%;
+    padding: 10px;
+    line-height: 14px;
+}
