@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula de Lógica de programação com Javascript</title>
+</head>
+
+<body>
+    <h1 id="titulo">Aula de Lógica de programação com Javascript</h1>
+    <ul>
+        <li>Fazer um olá mundo.. <br>
+            (é um pequeno programa que apenas tem a finalidade de mostrar msg)</li>
+       <li>
+           I/O .. E/S |Input/output Entrada/Saida (de dados) <br>
+           Declaração de <b>Variaveis tipos[inteiro, decimal, texto, boolean]</b>
+       </li>
+       <li>Funções (parte do codigo que executamos no momento desejado)</li>
+       <li>Estrutura de condição (if,else,case)</li>
+       <li>Laços de repetição</li>
+       <li>Array (listas)</li>
+       <li>JSON</li>
+    </ul>
+
+    <script>
+        // alert("Olá mundo via alert");
+        document.write('Óla mundo JS via write');
+        console.log('Olá mundo via console.log');
+        //document.getElementById("titulo").innerText = "Olá Mundo JS via getElementByid";
+
+        function changeTitle() {
+            document.getElementById("titulo").innerHTML = "Título modificado via <b>FUNCTION</b>"
+        }
+
+    </script>
+    <br>
+    <button onclick="alert('Eu falei pra não clicar aqui...')">!!Alerta não clique aqui</button>
+    <br>
+    <button onclick="changeTitle()">Mudar título</button>
+    <br>
+    <button onclick="inputName()">Digitar o nome</button>
+    <br>
+    <button onclick="personalizeTitle()">Personalizar Título</button>
+    <br>
+    <script>
+        document.write("OperaçõesJS<br>");
+        let n1 = 40;
+        document.write(n1+5);
+
+        function inputName() {
+
+            let nome = prompt("Digite o seu nome!");
+            alert("O nome digitado foi:"+nome);
+
+        }
+
+        function personalizeTitle(){
+            let newTitle = prompt('Digite o novo título');
+            document.getElementById("titulo").innerHTML = newTitle;
+        }
+
+        // DESAFIO de JS
+        // fazer um novo botão com o nome "Personalizar Título"
+        // criar uma função personalizar
+        // Na função tem que ter uma variavel que recebe o retorno do Prompt
+        // modificar o titulo pelo getElementById
+        
+    </script>
+</body>
+
+</html>
