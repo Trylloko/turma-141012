@@ -10,8 +10,13 @@
 </head>
 
 <body>
+    <style>
+        tbody {
+            cursor: pointer;
+        }
+    </style>
     <h1>Gerenciador de Tarefas</h1>
-    <div>
+    <div class="row">
         <div class="col-sm-2">
             <div class="form-group">
                 <label for="">Tarefa</label>
@@ -22,7 +27,8 @@
         <div class="col-sm-3">
             <br>
             <button class="btn btn-success" onclick="incluirTarefa()">Gravar</buttton>
-            <button class="btn" onclick="novo()">Novo</buttton>
+                <button class="btn" onclick="novo()">Novo</buttton>
+                    <button class="btn btn-danger" onclick="apagar()">Apagar</buttton>
         </div>
     </div>
     <div class="row">
@@ -49,7 +55,7 @@
 
 
         function incluirTarefa() {
-            let linha = doument.getElementById('linha').value;
+            let linha = document.getElementById('linha').value;
             let tarefa = document.getElementById('tarefa').value;
             if (linha != '') {
                 document.getElementsByTagName('td')[linha].innerHTML = tarefa;
@@ -80,6 +86,26 @@
         function novo() {
             document.getElementById('tarefa').value = '';
             document.getElementById('linha').value = '';
+        }
+
+        function apagar() {
+
+            let linha = document.getElementById('linha').value;
+            if (linha == '') {
+                alert('Necessário selecionar alguma tarefa');
+                return;
+            }
+
+            let confirmacao = confirm('Realmente deseja apagar essa tarefa?');
+            if (confirmacao) {
+                //console.log(linha == '');
+                linha++;
+                //console.log(linha);
+                document.querySelectorAll('tr')[linha].remove();
+                onclickNasLinhas();
+                novo();
+                corpoTabela = document.querySelector('tbody').innerHTML;
+            }
         }
 
 
