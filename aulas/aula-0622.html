@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de quiz</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            background-color: cadetblue;
+            padding: 15px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        h3 {
+            background-color: rgb(233, 233, 233);
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        h3:hover {
+            background-color: rgb(204, 204, 204);
+            cursor: pointer;
+        }
+
+        h3 {
+            font-weight: bolder;
+        }
+    </style>
+    <div class="container">
+        <h1>Quiz do senai</h1>
+        <h2>
+            Pergunta?
+        </h2>
+        <h3>
+            <span>A</span>
+            Resposta
+        </h3>
+        <h3>
+            <span>B</span>
+            Resposta
+        </h3>
+        <h3>
+            <span>C</span>
+            Resposta
+        </h3>
+        <h3>
+            <span>D</span>
+            Resposta
+        </h3>
+
+
+        <script>
+            document.querySelectorAll('h3')[0].addEventListener('click', ()=>{alert(0)});
+
+            function verificarResposta() {
+                document.querySelectorAll('h3')[0].style.backgroundColor = '#ff5555';
+                document.querySelectorAll('h3')[2].style.backgroundColor = '#56c856';
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>
