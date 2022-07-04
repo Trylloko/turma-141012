@@ -60,26 +60,77 @@
             <span>D</span>
             Resposta
         </h3>
+        <div class="btn btn-primary" onclick="next()">
+            Next
+        </div>
+    </div>
 
         <script>
-            document.querySelectorAll('h3')[0].addEventListener('click', ()=>{alert(0)});
 
-            function verificarResposta() {
-                document.querySelectorAll('h3')[0].style.backgroundColor = '#ff5555';
-                document.querySelectorAll('h3')[2].style.backgroundColor = '#56c856';
+            function verificarResposta(i) {
+                if (quiz.ponto >= 0) return;
+
+                document.querySelectorAll('h3')[i].style.backgroundColor = '#ff5555';
+                document.querySelectorAll('h3')[quiz.correta].style.backgroundColor = '#56c856';
+                if (i == quiz.correta) {
+                    quiz.ponto = 1;
+                } else {
+                    quiz.ponto = 0;
+                }
             }
 
-            let quiz = {
-                pergunta:"Qual foi o ultimo ano que o Brasil ganhou a copa.",
-                respostas ["1970","1962","2002","1994"],
-                correta: 2
+            let lsPerguntas = [
+                {
+                    pergunta: "Qual foi o ultimo ano que o Brasil ganhou a copa?",
+                    respostas ["1970", "2002", "1962", "1994"],
+                    correta: 1
+                },
+                {
+                    pergunta: "Qual nome do último presidente dos Estados Unidos?",
+                    respostas [ "George Bush", "Donald Trump", "Joe Biden", "Dwight Eisenhower"],
+                    correta: 2
+                }
+            {
+                    pergunta: "Qual é o maior planeta do sistema solar?",
+                    respostas ["Júpiter", "Saturno", "Urano", "Neturno"],
+                    correta: 0
+                }
+
+            ];
+            let quiz = {};
+            function carregarQuiz(nPergunta) {
+            quiz = lsPerguntas[nPergunta];
+                document.querySelector('h2').innerHTML = quiz.pergunta;
+                for (let i = 0; i < 4; i++) {
+                    document.querySelectorAll('h3')[i].style.backgroundColor = '#cccccc';
+                    document.querySelectorAll('h3')[i].innerHTML = quiz.respostas[i];
+                    let x = i;
+                    document.querySelectorAll('h3')[i].addEventListener('click', () => { verificarResposta(x) });
+                }
+            }
+            let quizAtual = 0;
+            carregarQuiz(quizAtual);
+            function next() {
+                // console.log(quizAtual);
+                // console.log(lsPergunta.length-1);
+                // console.log(quizAtual == lsPergunta.length-1);
+                if(quiz.ponto == undefined){
+                    alert('Antes de ir para a próxima pergunta responda essa!');
+                    return;
+               }
+                if(quizAtual == lsPergunta.length-1) return;
+                carregarQuiz(++quizAtual);
             }
 
-            document.querySelector('h2').innerHTML = quiz.pergunta;
-            document.querySelectorAll('h3')[0].innerHTML = quiz.pergunta;
+
+
+
+            // document.querySelectorAll('h3')[1].innerHTML = quiz.respostas[1];
+            // document.querySelectorAll('h3')[2].innerHTML = quiz.respostas[2];
+            // document.querySelectorAll('h3')[3].innerHTML = quiz.respostas[3];
         </script>
 
-    </div>
+    
 </body>
 
 </html>
