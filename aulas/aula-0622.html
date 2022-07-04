@@ -61,7 +61,6 @@
             Resposta
         </h3>
 
-
         <script>
             document.querySelectorAll('h3')[0].addEventListener('click', ()=>{alert(0)});
 
@@ -69,6 +68,15 @@
                 document.querySelectorAll('h3')[0].style.backgroundColor = '#ff5555';
                 document.querySelectorAll('h3')[2].style.backgroundColor = '#56c856';
             }
+
+            let quiz = {
+                pergunta:"Qual foi o ultimo ano que o Brasil ganhou a copa.",
+                respostas ["1970","1962","2002","1994"],
+                correta: 2
+            }
+
+            document.querySelector('h2').innerHTML = quiz.pergunta;
+            document.querySelectorAll('h3')[0].innerHTML = quiz.pergunta;
         </script>
 
     </div>
