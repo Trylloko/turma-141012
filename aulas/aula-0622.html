@@ -31,18 +31,19 @@
         }
 
         h3:hover {
-            background-color: rgb(204, 204, 204);
+            background-color: #cccccc;
             cursor: pointer;
         }
 
-        h3 {
+        h3 span {
             font-weight: bolder;
         }
     </style>
+
     <div class="container">
         <h1>Quiz do senai</h1>
         <h2>
-            Pergunta?
+            Qual foi o ultimo ano que o Brasil ganhou a copa?
         </h2>
         <h3>
             <span>A</span>
@@ -82,17 +83,17 @@
             let lsPerguntas = [
                 {
                     pergunta: "Qual foi o ultimo ano que o Brasil ganhou a copa?",
-                    respostas ["1970", "2002", "1962", "1994"],
+                    respostas: ["1970", "2002", "1962", "1994"],
                     correta: 1
                 },
                 {
                     pergunta: "Qual nome do último presidente dos Estados Unidos?",
-                    respostas [ "George Bush", "Donald Trump", "Joe Biden", "Dwight Eisenhower"],
+                    respostas: [ "George Bush", "Donald Trump", "Joe Biden", "Dwight Eisenhower"],
                     correta: 2
-                }
+                },
             {
                     pergunta: "Qual é o maior planeta do sistema solar?",
-                    respostas ["Júpiter", "Saturno", "Urano", "Neturno"],
+                    respostas: ["Júpiter", "Saturno", "Urano", "Neturno"],
                     correta: 0
                 }
 
@@ -105,7 +106,8 @@
                     document.querySelectorAll('h3')[i].style.backgroundColor = '#cccccc';
                     document.querySelectorAll('h3')[i].innerHTML = quiz.respostas[i];
                     let x = i;
-                    document.querySelectorAll('h3')[i].addEventListener('click', () => { verificarResposta(x) });
+                    document.querySelectorAll('h3')[i].addEventListener(
+                        'click', () => { verificarResposta(x) });
                 }
             }
             let quizAtual = 0;
@@ -118,16 +120,11 @@
                     alert('Antes de ir para a próxima pergunta responda essa!');
                     return;
                }
-                if(quizAtual == lsPergunta.length-1) return;
+                if(quizAtual == lsPerguntas.length-1) return ;
                 carregarQuiz(++quizAtual);
             }
 
 
-
-
-            // document.querySelectorAll('h3')[1].innerHTML = quiz.respostas[1];
-            // document.querySelectorAll('h3')[2].innerHTML = quiz.respostas[2];
-            // document.querySelectorAll('h3')[3].innerHTML = quiz.respostas[3];
         </script>
 
     
