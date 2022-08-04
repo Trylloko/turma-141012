@@ -38,12 +38,15 @@
         h3 span {
             font-weight: bolder;
         }
+        #next, #reiniciar{
+            display: block;
+        }
     </style>
 
     <div class="container">
-        <h1>Quiz do senai</h1>
+        <h1>Quiz do Senai</h1>
         <h2>
-            Qual foi o ultimo ano que o Brasil ganhou a copa?
+            Pergunta?
         </h2>
         <h3>
             <span>A</span>
@@ -61,13 +64,18 @@
             <span>D</span>
             Resposta
         </h3>
-        <div class="btn btn-primary" onclick="next()">
+        <div class="btn btn-primary"  id= "next" onclick="next()">
             Next
         </div>
+        <div class="btn btn-primary"  id= "reiniciar" onclick="reiniciar()">
+            Reiniciar
+        </div>
     </div>
-
     <script>
-
+        let placar = {
+            acertos: 0,
+            erros: 0
+        }
         function verificarResposta(i) {
             if (quiz.ponto >= 0) return;
 
@@ -75,12 +83,14 @@
             document.querySelectorAll('h3')[quiz.correta].style.backgroundColor = '#56c856';
             if (i == quiz.correta) {
                 quiz.ponto = 1;
+                placar.acertos += 1;
             } else {
                 quiz.ponto = 0;
+                placar.erros += 1;
             }
         }
 
-        let lsPerguntas = [
+        let lsPergunta = [
             {
                 pergunta: "Qual foi o ultimo ano que o Brasil ganhou a copa?",
                 respostas: ["1970", "2002", "1962", "1994"],
@@ -105,7 +115,7 @@
         }
         let quiz = {};
         function carregarQuiz(nPergunta) {
-            quiz = lsPerguntas[nPergunta];
+            quiz = lsPergunta[nPergunta];
             document.querySelector('h2').innerHTML = quiz.pergunta;
             for (let i = 0; i < 4; i++) {
                 document.querySelectorAll('h3')[i].style.backgroundColor = '#cccccc';
@@ -125,8 +135,35 @@
                 alert('Antes de ir para a próxima pergunta responda essa!');
                 return;
             }
-            if (quizAtual == lsPerguntas.length - 1) return;
+            if (quizAtual == lsPergunta.length - 1) {
+                fimQuiz();              
+                return;
+            }
+
             carregarQuiz(++quizAtual);
+        }
+
+        function fimQuiz() {
+            document.querySelector('h2').innerHTML = 'Resultado do Quiz';
+            document.querySelectorAll('h3')[0].innerHTML = `Acertos: ${placar.acertos}`;
+            document.querySelectorAll('h3')[1].innerHTML = `Erros: ${placar.erros}`;
+
+            document.querySelectorAll('h3')[0].style.backgroundColor = '#56c856';
+            document.querySelectorAll('h3')[1].style.backgroundColor = '#ff5555';
+
+            document.querySelectorAll('h3')[2].style.display = 'none';
+            document.querySelectorAll('h3')[3].style.display = 'none';
+
+            document.querySelector('#next').style.display = 'none';
+            document.querySelector('#reiniciar').style.display = 'block';
+        }
+        document.querySelector('#reiniciar').style.display = 'none';
+    
+        function reiniciar() {
+            let resp = confirm('Deseja reiniciar o Quiz?');
+            if(resp){
+                window.location.href = "/aulas/aula-0627-quiz.html";
+            }
         }
 
 
