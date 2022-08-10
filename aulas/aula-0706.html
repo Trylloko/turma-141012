@@ -75,7 +75,7 @@
             </h1>
             <input type="text" id="nuTabuada" style="display: inline">
             <input type="button" value="Calcular" onclick="tabuadaQ1()">
-            <p id="">Resultado: <br>N x 1 = NX<br>N x 2 = NX<br>...<br>N x 10 = NX<br></p>
+            <p id="resultadoQ1">Resultado: <br>N x 1 = NX<br>N x 2 = NX<br>...<br>N x 10 = NX<br></p>
         </div>
         <div class="questao">
             <h1>
@@ -158,10 +158,12 @@
             //while, for(1 variavel de contagem inicial,2 condição,3 forma de incremento), do while... (LAÇOS DE REPETIÇÃO APLICAVEIS)
             //for (VARIAVEL in ARRAY) for ( VARIAVEL on ARRAY) 
             let cont = 1
+            let resultado = "Resultado:<br>";
             do {
-                console.log(`${nuTabuada} * ${cont} = ${nuTabuada * cont}`);
+                resultado += `${nuTabuada} * ${cont} = ${nuTabuada * cont}<br>`;
                 cont++;
-            }while(cont <= 10);
+            }while (cont <= 10);
+            document.getElementById("resultadoQ1").innerHTML = resultado;
 
             while(cont <= 2){
                 console.log('Dentro do LOOP'+cont);
