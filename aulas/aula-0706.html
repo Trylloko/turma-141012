@@ -141,18 +141,39 @@
                     Jo-Ken-Po <a href="https://luiz87.github.io/lista-atividade/atividade-09/detalhes.html"
                         target="_blank">detalhar</a></span>
             </h1>
-            <p id="">Resultado: [Vitótio|Derrota|Empate]</p>
+            <p id="resultado06">Resultado: [Vitória|Derrota|Empate]</p>
             <span onmouseover="this.style.fontSize = &#39;50px&#39;" onmouseout="this.style.fontSize = &#39;30px&#39;"
-                class="mao">✊🏽</span>
+                class="mao" onclick="desafio('✊🏽')">✊🏽</span>
             <span onmouseover="this.style.fontSize = &#39;50px&#39;" onmouseout="this.style.fontSize = &#39;30px&#39;"
-                class="mao">🖐🏽</span>
+                class="mao" onclick="desafio('🖐🏽')">🖐🏽</span>
             <span onmouseover="this.style.fontSize = &#39;50px&#39;" onmouseout="this.style.fontSize = &#39;30px&#39;"
-                class="mao">✌🏽</span>
+                class="mao" onclick="desafio('✌🏽')">✌🏽</span>
             #
-            <span class="adversario">👋🏽</span>
+            <span id="adversario" class="adversario">👋🏽</span>
         </div>
     </div>
     <script>
+        function desafio(mao) {
+            console.log(mao);
+            let nSorteado = Math.round(Math.random() * 2);
+            let adversario = ['✊🏽', '🖐🏽', '✌🏽'];
+            let comp = adversario[nSorteado];
+            let resultado = "";
+            if (mao == comp) {
+                resultado += 'Empate';
+            } else if (
+                (mao == '✊🏽' && comp == '✌🏽') ||
+                (mao == '🖐🏽' && comp == '✊🏽') ||
+                (mao == '✌🏽' && comp == '🖐🏽')
+            ) {
+                resultado += 'Vitoria';
+            } else {
+                resultado += 'Derrota';
+            }
+            document.getElementById('adversario').innerHTML = comp;
+            document.getElementById('resultado06').innerHTML = `Resultado: [${resultado}]`;
+        }
+
         function questao01() {
             let nuTabuada = document.getElementById("nuTabuada").value;
             //while, for(1 variavel de contagem inicial,2 condição,3 forma de incremento), do while... (LAÇOS DE REPETIÇÃO APLICAVEIS)
@@ -238,11 +259,11 @@
 
         function questao04() {
             let resultado = "Resultado: ";
-            for(cont = 1; cont <= 6; cont++){
-                let nSorteado = Math.round(Math.random()*60);
-                resultado += nSorteado+",";
+            for (cont = 1; cont <= 6; cont++) {
+                let nSorteado = Math.round(Math.random() * 60);
+                resultado += nSorteado + ",";
             }
-            
+
             document.getElementById('resultadoQ4').innerHTML = nSorteado;
         }
 
@@ -253,14 +274,14 @@
             pessoa.nome = document.getElementById('nome').value;
             pessoa.nome = document.getElementById('sexo').value;
 
-            if(botao == 'add'){
+            if (botao == 'add') {
                 listaQ5.push(pessoa);
             } else if (botao == 'show') {
                 let m = "", f = "";
                 for (p of listaQ5) {
-                    if(p.sexo == 'M'){
-                        m = p.nome=',';
-                    }else{
+                    if (p.sexo == 'M') {
+                        m = p.nome = ',';
+                    } else {
                         f += p.nome + ',';
                     }
                 }
@@ -268,7 +289,7 @@
                 Lista de homens [${m}] <br>
                 Lista de mulheres [${f}]`;
                 document.getElementById('resultadoQ5').innerHTML = resultado;
-            }else if (botao == 'clear'){
+            } else if (botao == 'clear') {
                 listaQ5 = [];
                 resultado = `Resultado: <br>
                 Lista de homens [${m}] <br>
