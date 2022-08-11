@@ -110,8 +110,8 @@
                     <a href="https://luiz87.github.io/lista-atividade/atividade-09/detalhes.html"
                         target="_blank">detalhar</a></span>
             </h1>
-            <p id="">Resultado:00,00,00,00,00,00</p>
-            <input type="button" value="Sortear!">
+            <p id="resultadoQ4">Resultado:00,00,00,00,00,00</p>
+            <input type="button" value="Sortear!" onclick="questao04()">
         </div>
         <div class="questao">
             <h1>
@@ -234,6 +234,17 @@
                     break;
             }
             document.getElementById('itemLista').value = "";
+        }
+
+        function questao04() {
+            let resultado = "Resultado: ";
+            for(cont = 1; cont <= 6; cont++){
+                let nSorteado = Math.round(Math.random()*60);
+                resultado += nSorteado+",";
+            }
+            
+            document.getElementById('resultadoQ4').innerHTML = nSorteado;
+
         }
 
     </script>
