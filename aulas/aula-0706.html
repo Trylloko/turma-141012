@@ -97,12 +97,12 @@
                     <a href="https://luiz87.github.io/lista-atividade/atividade-09/detalhes.html"
                         target="_blank">detalhar</a></span>
             </h1>
-            <p id="">Resultado: A lista de itens é [xxxx,xxxx,xxxx,xxxxx]</p>
+            <p id="resultadoQ3">Resultado: A lista de itens é [xxxx,xxxx,xxxx,xxxxx]</p>
             <label for="">Item:</label>
-            <input type="text" id="">
-            <input type="button" value="Add">
-            <input type="button" value="Show">
-            <input type="button" value="Clear">
+            <input type="text" id="itemLista">
+            <input type="button" value="Add" onclick="questao03('add')">
+            <input type="button" value="Show" onclick="questao03('show')">
+            <input type="button" value="Clear" onclick="questao03('clear')">
         </div>
         <div class="questao">
             <h1>
@@ -153,7 +153,7 @@
         </div>
     </div>
     <script>
-        function questao01(){
+        function questao01() {
             let nuTabuada = document.getElementById("nuTabuada").value;
             //while, for(1 variavel de contagem inicial,2 condição,3 forma de incremento), do while... (LAÇOS DE REPETIÇÃO APLICAVEIS)
             //for (VARIAVEL in ARRAY) for ( VARIAVEL on ARRAY) 
@@ -162,18 +162,18 @@
             do {
                 resultado += `${nuTabuada} * ${cont} = ${nuTabuada * cont}<br>`;
                 cont++;
-            }while (cont <= 10);
+            } while (cont <= 10);
             document.getElementById("resultadoQ1").innerHTML = resultado;
 
-            while(cont <= 2){
-                console.log('Dentro do LOOP'+cont);
+            while (cont <= 2) {
+                console.log('Dentro do LOOP' + cont);
                 cont++;
             }
 
             do {
                 //console.log('Dentro do LOOP'+cont);
                 cont++;
-            }while(cont <= 2);   
+            } while (cont <= 2);
         }
 
         function questao02(params) {
@@ -197,23 +197,48 @@
             }*/
 
             //resolução 02
-            if (valor1 > valor2){
-               while (valor1 >= valor2) {
-                   console.log(valor1);
-                   resultado += valor1+",";
-                   valor1--;
-               }
-            }else{
+            if (valor1 > valor2) {
+                while (valor1 >= valor2) {
+                    console.log(valor1);
+                    resultado += valor1 + ",";
+                    valor1--;
+                }
+            } else {
                 while (valor1 <= valor2) {
                     console.log(valor1);
-                    resultado += valor1+",";
+                    resultado += valor1 + ",";
                     valor1++;
                 }
             }
             document.getElementById("resultadoQ2").innerHTML = resultado;
-        }       
+        }
+
+        let listaQ3 = [];
+        function questao03(botao) {
+
+            switch (botao) {
+                case 'add':
+                    listaQ3.push(document.getElementById('itemLista').value);
+                    console.log(listaQ3);
+                    break;
+                case 'show':
+                    document.getElementById('resultadoQ3').innerHTML =
+                        `Resultado: A lista de itens é [${listaQ3}]`;
+                    break;
+                case 'clear':
+                    listaQ3 = [];
+                    document.getElementById('resultadoQ3').innerHTML =
+                        `Resultado: A lista de itens é [${listaQ3}]`;
+                    break;
+                default:
+                    break;
+            }
+            document.getElementById('itemLista').value = "";
+        }
+
     </script>
 
 
 </body>
+
 </html>
