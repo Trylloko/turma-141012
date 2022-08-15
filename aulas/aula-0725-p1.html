@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="ls-regiao" id="ls-regiao">
+        <option value="">Norte</option>
+        <option value="">Sul</option>
+    </select>
+    <script>
+        // declarar
+        var xhttp = new XMLHttpRequest();
+        // configurar
+        xhttp.open("GET", "https://servicodados.ibge.gov.br/api/v1/localidades/regioes");
+        // ativar
+        xhttp.send();
+        // trabalhar com o retorno
+        xhttp.onload = function () {
+            //console.log(this.response);
+            carregarRegiao(this.response);
+        }
+
+        function carregarRegiao(lsRegiao) {
+            lsRegiao = JSON.parse(lsRegiao);
+            let lsOption = "";
+            //console.log(lsRegiao);
+            for (const r of lsRegiao) {
+                //console.log(r.nome);
+                lsOption += `<option value="${r.id}">${r.nome}</option`;
+            }
+            document.getElementById('ls-regiao').innerHTML = lsOption;
+        }
+        /* criar uma função para converter
+        uma String em Array de JSON
+        usar um laço de repetição para criar as <option> e incluir no <select
+        */
+    </script>
+
+    
+</body>
+
+</html>
