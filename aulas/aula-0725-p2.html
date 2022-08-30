@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <select name="ls-regiao" id="ls-regiao" onchange="alert(this.value)">
+    <select name="ls-regiao" id="ls-regiao" onchange="buscarUF(this.value)">
         <option value="">Norte</option>
         <option value="">Sul</option>
     </select>
@@ -38,7 +38,7 @@
             //console.log(lsRegiao);
             for (const r of lsRegiao) {
                 //console.log(r.nome);
-                lsOption += `<option value="${r.id}">${r.nome}</option`;
+                lsOption += `<option value="${r.id}">${r.nome}</option>`;
             }
             document.getElementById('ls-regiao').innerHTML = lsOption;
         }
@@ -46,7 +46,7 @@
 
         function buscarUF(idRegiao){
             let xhttp = new XMLHttpRequest();
-            xhttp.open("GET",`https://servicodados.ibge.gob.br/api/v1/localidades/regioes/${idRegiao}/estados`);
+            xhttp.open("GET",`https://servicodados.ibge.gov.br/api/v1/localidades/regioes/${idRegiao}/estados`);
             xhttp.send();
             xhttp.onload = function() {
                 let lsUf = this.response;
@@ -58,6 +58,19 @@
                 document.getElementById('ls-uf').innerHTML = lsOption;
             }
         }
+
+       
+
+
+
+
+        // fazer a mesma coisa para mostrar a lista de municipios
+        // https://https://servicodados.ibge.gov.br/api/v1/localidades/estados/{UF}/municipios
+
+        // carregar o endereço pelo CEP
+        // https://viacep.com.br/
+        // https://viacep.com.br/ws/01001000/json/
+
     </script>
 
 

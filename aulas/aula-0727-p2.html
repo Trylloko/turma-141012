@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar os produtos da loja</title>
+</head>
+<body>
+    <div id="lista-produto">
+
+    </div>
+    <script>
+        
+        let xhttp = new XMLHttpRequest();
+
+        function buscarProdutos() {
+            xhttp.open("GET","https://pascoa-chiquinha.herokuapp.com/produto/");
+            xhttp.send();
+            xhttp.onload = function () {
+                let ls = this.response;
+                ls = JSON.parse(ls);
+                //console.log(ls);
+                mostrarProdutos(ls);
+            }
+        }
+        function mostrarProdutos(ls){
+            let lsProduto = "";
+            for (obj of ls) {
+                lsProduto += `<div class="produto">
+                <h3 class="nome">${obj.nome}</h3>
+                <span class="descricao">${obj.descrição}</span>
+                <span class="valor">${obj.valor}</span>
+                <img height="90" src="${obj.imagem}" alt=""></div>`;
+                console.log(obj.nome);
+            }
+            document.getElementById("lista-Produto").innerHTML = lsProduto;
+        }
+        buscarProdutos();
+    </script>
+</body>
+</html>
