@@ -1,10 +1,11 @@
 let xhttp = new XMLHttpRequest();
+let lsProduto = [];
 
 function buscarProduto(){
     xhttp.open("GET","https://pascoa-chiquinha.herokuapp.com/produto/");
     xhttp.send();
     xhttp.onload= function (){
-        let lsProduto = this.response;
+        lsProduto = this.response;
         lsProduto = JSON.parse(lsProduto);
         montarListaProdutosHtml(lsProduto);
     }
@@ -12,6 +13,7 @@ function buscarProduto(){
 
 function montarListaProdutosHtml(lsProduto){
     let listaProduto = "";
+    let i = 0;
     for (produto of lsProduto) {
         listaProduto += `
         <div class="embrulho">
@@ -20,10 +22,26 @@ function montarListaProdutosHtml(lsProduto){
                 <p> ${produto.nome};
                     <span class="valor">${produto.valor.toFixed(2)}</span>
                 </p>
-                <i class="material-icons">&#xe8cc;</i>
+                <i class="material-icons" onclick="addProdutoCarrinho(${i})">&#xe8cc;</i>
             </div>
         </div>`;
+        produto.carrinho = false;
+        i++;
     }
     document.getElementById("listaProduto").innerHTML = listaProduto;
 }
+
+function addProdutoCarrinho(i){
+    let produto = lsProduto[i];
+    if(produto.carrinho == false){
+        produto.carrinho = true;
+        //console.log(produto);
+        document.getElementsByClassName("material-icons")[i].style.color = "#e66b6b";    
+    }else{
+        produto.carrinho = false;
+        document.getElementsByClassName("material-icons")[i].style.color = "#0000007d";
+    }
+   
+}
+
 buscarProduto();
