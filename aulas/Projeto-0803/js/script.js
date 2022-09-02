@@ -22,7 +22,7 @@ function montarListaProdutosHtml(lsProduto){
                 <p> ${produto.nome};
                     <span class="valor">${produto.valor.toFixed(2)}</span>
                 </p>
-                <i class="material-icons" onclick="addProdutoCarrinho(${i})">&#xe8cc;</i>
+                <i class="material-icons carrinho" onclick="addProdutoCarrinho(${i})">&#xe8cc;</i>
             </div>
         </div>`;
         produto.carrinho = false;
@@ -36,12 +36,20 @@ function addProdutoCarrinho(i){
     if(produto.carrinho == false){
         produto.carrinho = true;
         //console.log(produto);
-        document.getElementsByClassName("material-icons")[i].style.color = "#e66b6b";    
+        document.getElementsByClassName("carrinho")[i].style.color = "#e66b6b";    
     }else{
         produto.carrinho = false;
-        document.getElementsByClassName("material-icons")[i].style.color = "#0000007d";
+        document.getElementsByClassName("carrinho")[i].style.color = "#0000007d";
     }
    
+    function verListaProdutoSelecionado(){
+        for (produto of lsProduto) {
+            if(produto.carrinho){
+                console.log(produto)
+            }
+        }
+    }
+
 }
 
 buscarProduto();
