@@ -106,5 +106,25 @@ function add(qt, i, j) {
     document.getElementsByClassName("quantidade")[i].innerHTML = lsProduto[j].quantidade;
 }
 
+function enviarPedido(){
+    let pedido = '';
+    let total = 0;
+    for ( produto of lsProduto){
+        if(produto.carrinho){
+            let subtotal = produto.quantidade * produto.valor;
+            pedido += `${produto.nome} ${produto.quantidade} x ${produto.valor} = ${subtotal}\n`;
+            total += subtotal;
+        }
+    }
+    let nome = document.getElementById('nome').value;
+    let endereco = document.getElementById('endereco').value;
+    let msg = `Olá gostaria de fazer o seguinte pedido?\n${pedido} \nTotal: ${total} \nNome: ${nome} \nEndereço: ${endereco}`;
+    msg = encodeURI (msg);
+    console.log(msg)
+    let fone = '5561996083092'
+    link = `https://api.whatsapp.com/send?phone=${fone}&text=${pedido}`;
+    window.open(link,'_blank');
+}
+
 
 buscarProduto();
