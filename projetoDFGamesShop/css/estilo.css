@@ -5,7 +5,7 @@ body{
 h1{
     text-align: center;
     font-family: 'Goudy Old Style';
-    font-size: 80px;
+    font-size: 90px;
     /* color: rgb(2 16 236 / 26%); */
     text-shadow: 3px 3px 5px #120765;
 }
@@ -13,7 +13,7 @@ h1{
 .material-icons{
     color: white;
     position: absolute;
-    right: 125px;
+    right: 207px;
     bottom: 9px;
     font-size: 37px;
     cursor: pointer;
@@ -55,7 +55,7 @@ p{
 
 .produto{
     position: relative;
-    width: 500px;
+    width: 711px;
     margin-top: 20px;
 }
 
@@ -71,5 +71,5 @@ p{
 }
 
 #listaConsoles{
-    padding-left: 86px;
+    padding-left: 174px;
 }
