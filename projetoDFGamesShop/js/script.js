@@ -21,7 +21,7 @@ function montarListaConsoles(lsProduto) {
             <p>${produto.nome}
                <span class="preco">R$${produto.valor.toFixed(2)}</span> 
             </p>
-            <i class="material-icons" onclick="addProduto(${i})" >&#xe8cb;</i>
+            <i class="material-icons carrinho" onclick="addProduto(${i})" >&#xe8cb;</i>
         </div>
         </div>
         `;
@@ -31,16 +31,24 @@ function montarListaConsoles(lsProduto) {
     document.getElementById("listaConsoles").innerHTML = listaProduto;
 }
 
-function addProduto(i){
-        let produto = lsProduto[i];
-        if(produto.carrinho == false ){
-            produto.carrinho = true;
-            document.getElementsByClassName("material-icons")[i].style.color = "#000000";
-        }else{
-            produto.carrinho = false;
-            document.getElementsByClassName("material-icons")[i].style.color = "white";
-        }
-        
+function addProduto(i) {
+    let produto = lsProduto[i];
+    if (produto.carrinho == false) {
+        produto.carrinho = true;
+        document.getElementsByClassName("carrinho")[i].style.color = "#000000";
+    } else {
+        produto.carrinho = false;
+        document.getElementsByClassName("carrinho")[i].style.color = "white";
     }
+
+}
+
+function verProdutosAdded() {
+    for (produto of lsProduto) {
+        if(produto.carrinho){
+            
+        }
+    }
+}
 
 acessarProduto();
