@@ -1,10 +1,10 @@
 let xhttp = new XMLHttpRequest();
-
+let lsProduto = [];
 function acessarProduto() {
     xhttp.open("GET", "https://dfgamesshop.herokuapp.com/produto/");
     xhttp.send();
     xhttp.onload = function () {
-        let lsProduto = this.response;
+        lsProduto = this.response;
         lsProduto = JSON.parse(lsProduto);
         montarListaConsoles(lsProduto);
     }
@@ -12,19 +12,35 @@ function acessarProduto() {
 
 function montarListaConsoles(lsProduto) {
     let listaProduto = "";
+    let i = 0;
     for (produto of lsProduto) {
         listaProduto += `
         <div class="embrulho">
         <div class="produto">
             <img src="${produto.imagem}" alt="">
             <p>${produto.nome}
-               <span class="preco">${produto.valor.toFixed(2)}</span> 
+               <span class="preco">R$${produto.valor.toFixed(2)}</span> 
             </p>
-            <i class="material-icons">&#xe8cb;</i>
+            <i class="material-icons" onclick="addProduto(${i})" >&#xe8cb;</i>
         </div>
         </div>
         `;
+        produto.carrinho = false;
+        i++;
     }
     document.getElementById("listaConsoles").innerHTML = listaProduto;
 }
+
+function addProduto(i){
+        let produto = lsProduto[i];
+        if(produto.carrinho == false ){
+            produto.carrinho = true;
+            document.getElementsByClassName("material-icons")[i].style.color = "#000000";
+        }else{
+            produto.carrinho = false;
+            document.getElementsByClassName("material-icons")[i].style.color = "white";
+        }
+        
+    }
+
 acessarProduto();
