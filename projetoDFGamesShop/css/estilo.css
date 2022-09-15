@@ -1,16 +1,17 @@
-body{
+body {
     background-color: rgb(2 16 236 / 26%);
 }
 
-h1{
+h1 {
     text-align: center;
     font-family: 'Goudy Old Style';
     font-size: 90px;
     /* color: rgb(2 16 236 / 26%); */
     text-shadow: 3px 3px 5px #120765;
+    padding-left: 176px;
 }
 
-.material-icons{
+.carrinho {
     color: white;
     position: absolute;
     right: 207px;
@@ -19,18 +20,55 @@ h1{
     cursor: pointer;
 }
 
-.material-icons:hover{
-    color: #000000; 
+#pagamento {
+    font-size: 80px;
+    color: white;
+    cursor: pointer;
+    padding-left: 80px;
+    /* float: right; */
 }
 
-img{
+#pagamento:hover {
+    color: #000000;
+}
+
+.carrinho:hover {
+    color: #000000;
+}
+
+img {
     border-radius: 10%;
     height: 95px;
     width: 95px;
     box-shadow: 0px 0px 20px #000000
 }
 
-p{
+.btMaisMenos{
+    position: absolute;
+    right: 195px;
+    bottom: -2px;
+}
+
+.btMenos, .btMais{
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 51px;
+    padding: 9px;
+}
+
+.quantidade{
+    position: absolute;
+    right: 120px;
+    bottom: 20px;
+    font-size: 22px;
+    background-color: #000000;
+    border-radius: 24%;
+    padding: 14px;
+    color: white;
+}
+
+p {
     background-color: #555b7b;
     color: azure;
     position: absolute;
@@ -48,18 +86,44 @@ p{
     font-size: 20px;
 }
 
-.embrulho{
+.embrulho {
     display: grid;
     place-items: center;
 }
 
-.produto{
+#formulario{
+    display: grid;
+    place-items: center;
+}
+
+label{
+    font-size: 22px;
+}
+
+input{
+    width: 600px;
+    font-size: 16px;
+    border: solid rgb(25 14 40 / 89%);
+}
+
+#btFinalizar{
+    background-color: #555b7b;
+    color: white;
+    border: none;
+    font-size: 32px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5%;
+    padding: 4px;
+}
+
+.produto {
     position: relative;
     width: 711px;
     margin-top: 20px;
 }
 
-.preco{
+.preco {
     text-align: right;
     float: right;
     margin-right: 10px;
@@ -70,6 +134,6 @@ p{
     font-family: "Lucida Console";
 }
 
-#listaConsoles{
+#listaConsoles {
     padding-left: 174px;
 }
